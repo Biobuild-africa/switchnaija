@@ -99,7 +99,27 @@ datasheet-sourced.
 - **Waste.** Batteries bought x capacity x mass per kWh: lead-acid 29 kg/kWh (30 to 50 Wh/kg, Battery University),
   55% lead by mass (US EPA: 21.4 lb of lead in a 39 lb battery); LFP 9 kg/kWh (Pylontech US3000C: 3.55 kWh, 32 kg).
 
-## 9. Known limitations
+## 9. FloodSafe
+
+- **Facilities.** GRID3 Nigeria schools (layer 45) and markets (layer 46) with LGA names, queried by state and LGA from
+  the public ArcGIS service. Coordinates come from the point geometry (the separate lat/lon columns are rounded to
+  0.01 degree, about 1 km, which is too coarse for a 90 m flood map). Collected around 2018 to 2019.
+- **Flood hazard.** Copernicus EMS / EU JRC global river flood hazard maps v2.1 (LISFLOOD-FP, 3 arc-seconds, about 90 m),
+  water depth for the 10-year and 100-year return periods. Each 10 x 10 degree tile is a tiled GeoTIFF, so only the
+  window around the LGA is read (rasterio over HTTP). Risk: High = depth > 0 at the 10-year flood; Medium = depth > 0
+  at the 100-year flood; Low = any 100-year flooding within one cell (about 90 m). Depths above 10 m are flagged
+  because the JRC README warns they can be artefacts. River floods only: no pluvial (drainage) flooding or gully erosion.
+- **Rainfall.** NASA POWER daily PRECTOTCORR, 1981 to 2025, at the centre of the LGA's facilities (grid of roughly 50 km).
+  Per year: wettest day, wettest 3 days, days with at least 50 mm.
+- **Trend tests.** Mann-Kendall (two-sided, tie-corrected) and Sen's slope on the annual wettest day. A GEV distribution is
+  fitted by maximum likelihood, first with fixed parameters and then with location mu(t) = mu0 + mu1 t; a likelihood-ratio
+  test (chi-squared, 1 degree of freedom) checks whether the trend model is better. From the trend model: the 1-in-25-year
+  one-day rain at the start and end of the record, and how often the old 1-in-25-year storm now occurs. If neither test
+  is significant at 5%, the page reports no clear trend and uses the fixed model.
+- **Uncertainty.** 45 annual maxima are few for extremes; return levels are rough. The shape parameter is bounded to
+  |xi| <= 0.5 in the trend model.
+
+## 10. Known limitations
 
 - Outage timing is synthetic; real outages cluster and vary by feeder.
 - One weather year (2023).

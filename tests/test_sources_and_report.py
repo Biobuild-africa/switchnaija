@@ -24,3 +24,13 @@ def test_nasa_power_daily_rain(tmp_path, monkeypatch):
     df = fetch_daily(7.7333, 4.4333, start="20230101", end="20231231")
     assert len(df) == 365
     assert df["PRECTOTCORR"].sum() > 500
+
+
+@pytest.mark.network
+def test_grid3_and_jrc_flood_exposure_ogbaru(tmp_path, monkeypatch):
+    pytest.importorskip("rasterio")
+    monkeypatch.setenv("SWITCHNAIJA_CACHE", str(tmp_path))
+    from switchnaija.flood.exposure import assess
+    df = assess("Anambra", "Ogbaru")
+    assert len(df) > 50                      # GRID3 schools and markets on the Niger floodplain
+    assert (df["risk"] == "High").sum() > 10  # many sit inside the 1-in-10-year river flood area

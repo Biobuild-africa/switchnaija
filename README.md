@@ -13,7 +13,7 @@ schools and markets. SwitchNaija turns free public data into practical answers.
 |---|---|---|
 | **Energy Planner** | Should I switch from my generator to solar? What size, which battery, what payback, how much CO2? | Working |
 | **Battery Afterlife** | Which battery is cheapest over its life in a hot Nigerian room, and how do I dispose of it safely? | Working |
-| **FloodSafe** | Which schools and markets are most exposed to flooding, and is heavy rain getting more frequent? | In progress |
+| **FloodSafe** | Which schools and markets are most exposed to flooding, and is heavy rain getting more frequent? | Working |
 
 ## Energy Planner: what it does
 
@@ -59,6 +59,23 @@ Example (Osogbo, 2 kWh a day, ventilated room, default prices): lead-acid lasts 
 about N524 per kWh used; LFP lasts about 5.4 years at about N202 per kWh, and leaves 41 kg of battery waste
 over ten years instead of 778 kg (about 430 kg of it lead).
 
+## FloodSafe: what it does
+
+For any local government area in Nigeria:
+
+1. Pulls every school and market on the **GRID3 Nigeria** register (about 108,000 schools and 11,000 markets).
+2. Reads the **EU Copernicus / JRC global river flood maps** (about 90 m) at each one, for floods expected once in
+   10 and once in 100 years, and ranks them High, Medium or Low. Only the map pixels needed are read over the internet.
+3. Analyses **45 years of daily rainfall** (NASA POWER, 1981 to 2025): wettest day of each year, Mann-Kendall trend
+   test with Sen's slope, and a GEV extreme-value model whose centre can shift over time, to answer "is heavy rain
+   getting heavier here?"
+4. Shows a map, a downloadable list for the LGA, and the rainfall trend in plain words.
+
+Examples: in **Ogbaru, Anambra** (Niger floodplain), 46 of 100 schools and markets sit inside the mapped
+1-in-100-year flood area, 35 of them inside the 1-in-10-year area, with up to 5.8 m of water. In **Idemili South**, none
+do: the risk there is flash flooding and gully erosion, which river maps do not show. Around **Ede, Osun**, the
+wettest day of the year has risen by about 3 mm a decade since 1981 (Mann-Kendall p = 0.04).
+
 ## Quick start
 
 ```bash
@@ -84,7 +101,8 @@ Run the tests: `pytest` (add `-m "not network"` to skip the live API checks).
 switchnaija/
   sources/    PVGIS, NASA POWER connectors (cached)
   energy/     load profiles, outages, generator fuel curve, hourly dispatch, economics, optimiser
-  battery/    chemistries, rainflow counting, ageing model
+  battery/    chemistries, rainflow counting, ageing model, lifetime cost and waste
+  flood/      rainfall extremes and trend tests, flood exposure of schools and markets
   data/       defaults.yaml (every assumption, with sources), towns.json (37 state capitals + more)
 app/          Streamlit web app, styled to match biobuildafrica.org (app/ui.py)
 tests/        pytest suite, including real PVGIS data for Ede (2023)
@@ -99,6 +117,8 @@ docs/         METHODS.md
 - National Bureau of Statistics (NBS): Petrol and Diesel Price Watch
 - Nigerian Electricity Regulatory Commission (NERC): tariff band supply hours
 - OpenStreetMap Nominatim: town coordinates
+- GRID3 Nigeria: schools and markets with LGA names
+- Copernicus Emergency Management Service (EU JRC): global river flood hazard maps v2.1
 
 ## Limitations
 

@@ -25,8 +25,8 @@ c2.markdown(ui.card("🔋", "Battery Afterlife",
                     "ten years, and how to store and recycle it safely instead of dumping it.",
                     "Compare batteries", "/battery"), unsafe_allow_html=True)
 c3.markdown(ui.card("🌧", "FloodSafe",
-                    "Forty-five years of rainfall records and flood-hazard maps, used to rank the schools and "
-                    "markets most at risk in Idemili South, Ede and Lagos.",
+                    "Forty-five years of rainfall records and EU flood maps, used to rank the schools and "
+                    "markets most at risk in any local government area.",
                     "Check flood risk", "/flood"), unsafe_allow_html=True)
 
 st.markdown("<div style='height:56px'></div>", unsafe_allow_html=True)
