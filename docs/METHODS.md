@@ -84,7 +84,22 @@ datasheet-sourced.
   meeting the minimum solar share is recommended.
 - Fuel price sensitivity: payback at 70%, 100% and 130% of the input price.
 
-## 8. Known limitations
+## 8. Battery Afterlife
+
+- **Sizing.** Each chemistry is sized to deliver the same daily energy E: capacity = E / (sqrt(RTE) x max DoD) x oversize.
+  Lead-acid (max DoD 50%) therefore needs about twice the nominal capacity of LFP (max DoD 90%).
+- **Use pattern.** On a day of use the battery is emptied evenly over 12 hours (6pm to 6am) and recharged by solar
+  from 9am to 3pm; days without use stay full. Days of use are spread evenly through the week.
+- **Temperature.** Hourly 2023 air temperature from PVGIS for the location, plus a room adjustment (ASSUMPTION):
+  air-conditioned room fixed at 24 C; ventilated room +3 C; closed cabinet +6 C; outside under a metal roof +10 C.
+- **Ageing.** Same model as section 6, except calendar damage is averaged hour by hour. Ageing grows exponentially
+  with heat, so hot afternoons add more damage than cool nights remove, and life is shorter than with the mean temperature.
+- **Cost.** Ten-year present value of the first battery, replacements at multiples of its life, and a credit for
+  life left at year ten. Cost per kWh = present cost / discounted kWh delivered.
+- **Waste.** Batteries bought x capacity x mass per kWh: lead-acid 29 kg/kWh (30 to 50 Wh/kg, Battery University),
+  55% lead by mass (US EPA: 21.4 lb of lead in a 39 lb battery); LFP 9 kg/kWh (Pylontech US3000C: 3.55 kWh, 32 kg).
+
+## 9. Known limitations
 
 - Outage timing is synthetic; real outages cluster and vary by feeder.
 - One weather year (2023).

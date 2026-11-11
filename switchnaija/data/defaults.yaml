@@ -95,6 +95,10 @@ battery:
     temp_doubling_c: 10          # Trojan: reaction rate doubles for every 10 C rise
     recyclable_fraction: 0.97
     hazard: "Contains lead and sulphuric acid. Never break open, burn or dump."
+    # 30 to 50 Wh/kg (Battery University); heavy deep-cycle types sit near the low end.
+    kg_per_kwh: 29
+    # US EPA via Waste360: a 39 lb car battery holds 21.4 lb of lead (about 55%).
+    lead_fraction: 0.55
   lfp:
     label: "Lithium iron phosphate (LFP)"
     # 48 V 100 Ah (5 kWh) packs N1.1m to N1.65m; Deye SE-G5.1 about N1.25m (Oct 2026)
@@ -110,6 +114,7 @@ battery:
     temp_doubling_c: 15
     recyclable_fraction: 0.60
     hazard: "Low fire risk compared with other lithium types. Do not puncture or crush."
+    kg_per_kwh: 9                # Pylontech US3000C datasheet: 3.55 kWh, 32 kg
   # NMC home batteries are not commonly sold in Nigeria and these parameters are not
   # sourced from a datasheet. NMC is excluded from the default comparison.
   nmc:
@@ -126,6 +131,13 @@ battery:
     hazard: "Fire risk if damaged or overheated. Store dead cells cool and dry, away from flammables."
   end_of_life_capacity: 0.80     # replaced when usable capacity falls to 80%
   room_temp_offset_c: 3          # battery space is usually warmer than outdoor air
+  # Battery Afterlife: how much warmer than outdoor air each kind of battery space runs.
+  # ASSUMPTION (rule-of-thumb values): measure your own room with a thermometer if you can.
+  rooms:
+    "Air-conditioned room": { fixed_c: 24 }
+    "Ventilated room indoors": { offset_c: 3 }
+    "Closed cabinet or store room": { offset_c: 6 }
+    "Outside under a metal roof": { offset_c: 10 }
 
 finance:
   horizon_years: 10

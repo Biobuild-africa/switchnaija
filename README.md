@@ -12,7 +12,7 @@ schools and markets. SwitchNaija turns free public data into practical answers.
 | Module | Question | Status |
 |---|---|---|
 | **Energy Planner** | Should I switch from my generator to solar? What size, which battery, what payback, how much CO2? | Working |
-| **Battery Afterlife** | Which battery is cheapest over its life in a hot Nigerian room, and how do I dispose of it safely? | Engine working, page in progress |
+| **Battery Afterlife** | Which battery is cheapest over its life in a hot Nigerian room, and how do I dispose of it safely? | Working |
 | **FloodSafe** | Which schools and markets are most exposed to flooding, and is heavy rain getting more frequent? | In progress |
 
 ## Energy Planner: what it does
@@ -41,6 +41,23 @@ petrol N1,400/L, November 2026 market prices):
 | Payback | | about 13 months |
 
 Every default (fuel, tariffs, equipment prices, battery parameters) is in `switchnaija/data/defaults.yaml` with its source and date. It was last checked against NERC tariff orders, fuel market reports, manufacturer datasheets and Nigerian retailer listings in November 2026. Prices move monthly: enter what you actually pay.
+
+## Battery Afterlife: what it does
+
+For your town, your daily battery use and where the battery is kept (air-conditioned room, ventilated
+room, closed cabinet, or outside under a metal roof):
+
+1. Sizes a lead-acid and an LFP bank to deliver **the same usable energy** (lead-acid should only be emptied to 50%).
+2. Ages each battery **hour by hour** with rainflow cycle counting and heat-accelerated calendar ageing,
+   using real hourly temperatures for the location (PVGIS).
+3. Reports life in years, batteries bought over ten years, **cost per kWh actually used**, and the
+   **battery waste and lead** each choice leaves behind.
+4. Shows how much the battery space alone changes battery life, and gives safe end-of-life steps
+   (Nigeria's National Environmental (Battery Control) Regulations, 2024).
+
+Example (Osogbo, 2 kWh a day, ventilated room, default prices): lead-acid lasts about 1.9 years and costs
+about N524 per kWh used; LFP lasts about 5.4 years at about N202 per kWh, and leaves 41 kg of battery waste
+over ten years instead of 778 kg (about 430 kg of it lead).
 
 ## Quick start
 

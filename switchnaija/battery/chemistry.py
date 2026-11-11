@@ -26,6 +26,8 @@ class Chemistry:
     temp_doubling_c: float
     recyclable_fraction: float
     hazard: str
+    kg_per_kwh: float = 0.0        # battery mass per kWh of nominal capacity
+    lead_fraction: float = 0.0     # share of battery mass that is lead
 
     @property
     def charge_efficiency(self) -> float:
