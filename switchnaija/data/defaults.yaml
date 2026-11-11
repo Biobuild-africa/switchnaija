@@ -1,0 +1,132 @@
+# SwitchNaija default assumptions.
+#
+# Every number here is either taken from a public source (cited) or is an
+# explicit ASSUMPTION that a user should replace with a local quote.
+# Prices in Nigeria change monthly: update the "as_of" fields when you edit.
+
+meta:
+  currency: NGN
+  last_reviewed: "2026-11"
+
+grid:
+  # NERC service-based tariff bands: minimum committed hours of supply per day.
+  # Source: NERC Supplementary Order to MYTO-2024, Ikeja Electric, ORDER/NERC/2026/093
+  # (effective 1 Sep 2026), Appendix 1. Checked 10 Nov 2026.
+  band_hours:
+    A: 20
+    B: 16
+    C: 12
+    D: 8
+    E: 4
+    "No grid": 0
+  # Residential (non-MD) end-user tariffs, N/kWh. Source: NERC ORDER/NERC/2026/093
+  # (Ikeja Electric, Sep 2026), Table 3. Band A is N209.50 across DisCos; B to E vary
+  # slightly by DisCo and by state regulator (e.g. LASERC in Lagos): check your bill.
+  tariff_ngn_per_kwh:
+    A: 209.50
+    B: 62.48
+    C: 45.80
+    D: 31.24
+    E: 31.24
+    "No grid": 0.0
+  # CO2 intensity of Nigerian grid electricity: Ember 2025 = 0.456 kg/kWh
+  # (about 69% gas, 31% hydro). Defensible range 0.38 to 0.48.
+  co2_kg_per_kwh: 0.45
+
+fuel:
+  # The latest NBS Price Watch is May 2026 (petrol N1,596.25, diesel N3,277.47, a
+  # war-driven spike). Market prices have fallen since, so defaults use November 2026
+  # market prices. Users should enter what they actually pay.
+  petrol:
+    price_ngn_per_litre: 1400
+    as_of: "Nov 2026"
+    source: "Lagos pump price N1,349 to N1,370/L (Vanguard, Nov 2026); NBS May 2026 average N1,596"
+    co2_kg_per_litre: 2.31    # US EPA 2025: 2.32; DEFRA 2026 (100% mineral): 2.35
+  diesel:
+    price_ngn_per_litre: 1950
+    as_of: "Nov 2026"
+    source: "Estimate: Dangote gantry N1,720/L (10 Nov 2026) plus retail margin; pumps about N2,000 (Sep 2026)"
+    co2_kg_per_litre: 2.68    # US EPA 2025: 2.70; DEFRA 2026 (100% mineral): 2.66
+  # Expected real escalation of fuel prices per year (scenario input).
+  escalation_per_year: 0.05
+
+generator:
+  # Fuel curve: litres/hour = F0 * rated_kW + F1 * output_kW
+  # Diesel: the HOMER default values widely cited in the literature (not stated in
+  # HOMER's public help pages). Petrol: fitted to datasheets, e.g. Sumec Firman SPG3000
+  # (2.5 kVA) uses about 1.07 L/h at half load (15 L tank, 14 h); the model gives 1.0 L/h.
+  # Use "calibrate to my fuel use" to fit your own generator.
+  fuel_curve:
+    diesel: { F0: 0.08145, F1: 0.246 }
+    petrol: { F0: 0.15, F1: 0.50 }
+  # kVA to kW. Small petrol sets are rated close to unity; diesel sets at 0.8.
+  power_factor:
+    petrol: 1.0
+    diesel: 0.8
+  # Oil (changed every 50 to 100 h, about N10,000/L), plugs, filters, repairs.
+  # About N60 per kVA per running hour: N150/h for a 2.5 kVA set. ASSUMPTION.
+  om_ngn_per_hour_per_kva: 60
+
+solar:
+  # Nigerian market prices, Oct to Nov 2026 (retailer listings: Jumia, Nature Solar,
+  # Eneronix, Solar Energy Supply Stores). Replace with installer quotes.
+  pv_ngn_per_kwp: 300000         # modules N160 to N350 per W (mid-range Tier-1 mono)
+  inverter_ngn_per_kw: 120000    # hybrid inverters N80k to N140k per kVA (Growatt, Deye)
+  installation_fraction: 0.10    # wiring, mounting labour, protection
+  om_fraction_per_year: 0.01     # of PV + inverter capex
+  inverter_life_years: 10
+  inverter_efficiency: 0.95
+
+battery:
+  # Cycle and calendar life from manufacturer datasheets; prices from Nigerian
+  # retailers, Oct 2026 (Solar Energy Supply Stores, Nature Solar, Solarlify).
+  lead_acid:
+    label: "Lead-acid (tubular / AGM)"
+    # 12 V 200 to 220 Ah branded batteries: about N115k to N165k per kWh
+    # Cycle life: tubular 900 to 1,100 cycles at 80% DoD (Eastman EM200, PCE), AGM
+    # about 450 at 80% DoD; 1,200 at 50% is a blend of the two.
+    price_ngn_per_kwh: 140000
+    round_trip_efficiency: 0.80
+    max_dod: 0.50                # recommended usable depth of discharge
+    cycles_at_ref: 1200          # cycles to 80% capacity at reference DoD
+    ref_dod: 0.50
+    dod_exponent: 1.3            # N(DoD) = cycles_at_ref * (ref_dod / DoD)^k
+    calendar_life_years_25c: 6   # ASSUMPTION for cycling service (float ratings are longer)
+    temp_doubling_c: 10          # Trojan: reaction rate doubles for every 10 C rise
+    recyclable_fraction: 0.97
+    hazard: "Contains lead and sulphuric acid. Never break open, burn or dump."
+  lfp:
+    label: "Lithium iron phosphate (LFP)"
+    # 48 V 100 Ah (5 kWh) packs N1.1m to N1.65m; Deye SE-G5.1 about N1.25m (Oct 2026)
+    price_ngn_per_kwh: 250000
+    # Datasheets (Felicity, Pylontech): 6,000+ cycles at 80% DoD and 25 C.
+    # 4,000 is used to allow for hot-climate derating (conservative).
+    round_trip_efficiency: 0.95
+    max_dod: 0.90
+    cycles_at_ref: 4000
+    ref_dod: 0.80
+    dod_exponent: 1.1
+    calendar_life_years_25c: 15
+    temp_doubling_c: 15
+    recyclable_fraction: 0.60
+    hazard: "Low fire risk compared with other lithium types. Do not puncture or crush."
+  # NMC home batteries are not commonly sold in Nigeria and these parameters are not
+  # sourced from a datasheet. NMC is excluded from the default comparison.
+  nmc:
+    label: "Lithium NMC"
+    price_ngn_per_kwh: 420000
+    round_trip_efficiency: 0.95
+    max_dod: 0.85
+    cycles_at_ref: 2000
+    ref_dod: 0.80
+    dod_exponent: 1.2
+    calendar_life_years_25c: 10
+    temp_doubling_c: 10
+    recyclable_fraction: 0.60
+    hazard: "Fire risk if damaged or overheated. Store dead cells cool and dry, away from flammables."
+  end_of_life_capacity: 0.80     # replaced when usable capacity falls to 80%
+  room_temp_offset_c: 3          # battery space is usually warmer than outdoor air
+
+finance:
+  horizon_years: 10
+  discount_rate: 0.12            # real, per year

@@ -1,0 +1,303 @@
+[
+ {
+  "state": "Abia",
+  "town": "Umuahia",
+  "lat": 5.5324,
+  "lon": 7.4924,
+  "capital": true
+ },
+ {
+  "state": "Adamawa",
+  "town": "Yola",
+  "lat": 9.2089,
+  "lon": 12.4802,
+  "capital": true
+ },
+ {
+  "state": "Akwa Ibom",
+  "town": "Uyo",
+  "lat": 4.9902,
+  "lon": 7.9974,
+  "capital": true
+ },
+ {
+  "state": "Anambra",
+  "town": "Awka",
+  "lat": 6.2189,
+  "lon": 7.0774,
+  "capital": true
+ },
+ {
+  "state": "Bauchi",
+  "town": "Bauchi",
+  "lat": 10.3148,
+  "lon": 9.8454,
+  "capital": true
+ },
+ {
+  "state": "Bayelsa",
+  "town": "Yenagoa",
+  "lat": 4.9335,
+  "lon": 6.2748,
+  "capital": true
+ },
+ {
+  "state": "Benue",
+  "town": "Makurdi",
+  "lat": 7.7313,
+  "lon": 8.5384,
+  "capital": true
+ },
+ {
+  "state": "Borno",
+  "town": "Maiduguri",
+  "lat": 11.8395,
+  "lon": 13.1536,
+  "capital": true
+ },
+ {
+  "state": "Cross River",
+  "town": "Calabar",
+  "lat": 4.9796,
+  "lon": 8.3374,
+  "capital": true
+ },
+ {
+  "state": "Delta",
+  "town": "Asaba",
+  "lat": 6.1859,
+  "lon": 6.7297,
+  "capital": true
+ },
+ {
+  "state": "Ebonyi",
+  "town": "Abakaliki",
+  "lat": 6.3209,
+  "lon": 8.1133,
+  "capital": true
+ },
+ {
+  "state": "Edo",
+  "town": "Benin City",
+  "lat": 6.3331,
+  "lon": 5.6221,
+  "capital": true
+ },
+ {
+  "state": "Ekiti",
+  "town": "Ado-Ekiti",
+  "lat": 7.6232,
+  "lon": 5.2227,
+  "capital": true
+ },
+ {
+  "state": "Enugu",
+  "town": "Enugu",
+  "lat": 6.4497,
+  "lon": 7.5137,
+  "capital": true
+ },
+ {
+  "state": "FCT",
+  "town": "Abuja",
+  "lat": 9.0643,
+  "lon": 7.4893,
+  "capital": true
+ },
+ {
+  "state": "Gombe",
+  "town": "Gombe",
+  "lat": 10.2822,
+  "lon": 11.163,
+  "capital": true
+ },
+ {
+  "state": "Imo",
+  "town": "Owerri",
+  "lat": 5.4897,
+  "lon": 7.0342,
+  "capital": true
+ },
+ {
+  "state": "Jigawa",
+  "town": "Dutse",
+  "lat": 11.691,
+  "lon": 9.3391,
+  "capital": true
+ },
+ {
+  "state": "Kaduna",
+  "town": "Kaduna",
+  "lat": 10.5183,
+  "lon": 7.436,
+  "capital": true
+ },
+ {
+  "state": "Kano",
+  "town": "Kano",
+  "lat": 11.994,
+  "lon": 8.522,
+  "capital": true
+ },
+ {
+  "state": "Katsina",
+  "town": "Katsina",
+  "lat": 12.9894,
+  "lon": 7.6006,
+  "capital": true
+ },
+ {
+  "state": "Kebbi",
+  "town": "Birnin Kebbi",
+  "lat": 12.4573,
+  "lon": 4.2006,
+  "capital": true
+ },
+ {
+  "state": "Kogi",
+  "town": "Lokoja",
+  "lat": 7.8024,
+  "lon": 6.743,
+  "capital": true
+ },
+ {
+  "state": "Kwara",
+  "town": "Ilorin",
+  "lat": 8.4964,
+  "lon": 4.548,
+  "capital": true
+ },
+ {
+  "state": "Lagos",
+  "town": "Ikeja",
+  "lat": 6.6016,
+  "lon": 3.3516,
+  "capital": true
+ },
+ {
+  "state": "Nasarawa",
+  "town": "Lafia",
+  "lat": 8.496,
+  "lon": 8.5148,
+  "capital": true
+ },
+ {
+  "state": "Niger",
+  "town": "Minna",
+  "lat": 9.6187,
+  "lon": 6.5476,
+  "capital": true
+ },
+ {
+  "state": "Ogun",
+  "town": "Abeokuta",
+  "lat": 7.161,
+  "lon": 3.348,
+  "capital": true
+ },
+ {
+  "state": "Ondo",
+  "town": "Akure",
+  "lat": 7.2526,
+  "lon": 5.1933,
+  "capital": true
+ },
+ {
+  "state": "Osun",
+  "town": "Osogbo",
+  "lat": 7.7583,
+  "lon": 4.575,
+  "capital": true
+ },
+ {
+  "state": "Oyo",
+  "town": "Ibadan",
+  "lat": 7.3784,
+  "lon": 3.8972,
+  "capital": true
+ },
+ {
+  "state": "Plateau",
+  "town": "Jos",
+  "lat": 9.9175,
+  "lon": 8.8979,
+  "capital": true
+ },
+ {
+  "state": "Rivers",
+  "town": "Port Harcourt",
+  "lat": 4.7677,
+  "lon": 7.0189,
+  "capital": true
+ },
+ {
+  "state": "Sokoto",
+  "town": "Sokoto",
+  "lat": 13.0611,
+  "lon": 5.2373,
+  "capital": true
+ },
+ {
+  "state": "Taraba",
+  "town": "Jalingo",
+  "lat": 8.895,
+  "lon": 11.36,
+  "capital": true
+ },
+ {
+  "state": "Yobe",
+  "town": "Damaturu",
+  "lat": 11.747,
+  "lon": 11.9608,
+  "capital": true
+ },
+ {
+  "state": "Zamfara",
+  "town": "Gusau",
+  "lat": 12.1658,
+  "lon": 6.6606,
+  "capital": true
+ },
+ {
+  "state": "Osun",
+  "town": "Ede",
+  "lat": 7.7333,
+  "lon": 4.4333,
+  "capital": false
+ },
+ {
+  "state": "Anambra",
+  "town": "Alor",
+  "lat": 6.0802,
+  "lon": 6.9651,
+  "capital": false
+ },
+ {
+  "state": "Anambra",
+  "town": "Nnobi",
+  "lat": 6.0482,
+  "lon": 6.9485,
+  "capital": false
+ },
+ {
+  "state": "Lagos",
+  "town": "Lekki",
+  "lat": 6.4711,
+  "lon": 3.8148,
+  "capital": false
+ },
+ {
+  "state": "Lagos",
+  "town": "Surulere",
+  "lat": 6.4856,
+  "lon": 3.354,
+  "capital": false
+ },
+ {
+  "state": "Ondo",
+  "town": "FUTA Akure",
+  "lat": 7.3045,
+  "lon": 5.1295,
+  "capital": false
+ }
+]

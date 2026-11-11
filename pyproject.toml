@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "switchnaija"
+version = "0.1.0"
+description = "Open-data tools for Nigerian households and small businesses: generator-to-solar planning, battery lifetime and end-of-life, and flood exposure of schools and markets."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Emmanuel Adetooto" }]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "scipy>=1.10",
+  "requests>=2.31",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.30", "plotly>=5.18"]
+dev = ["pytest>=7.4", "pytest-cov>=4.1"]
+
+[tool.setuptools.packages.find]
+include = ["switchnaija*"]
+
+[tool.setuptools.package-data]
+switchnaija = ["data/*.yaml", "data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["network: tests that call live public APIs (deselect with -m 'not network')"]
