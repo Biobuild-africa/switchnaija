@@ -100,6 +100,35 @@ div.stButton > button:hover, div.stDownloadButton > button:hover {{ background: 
 .bb-footer a {{ display: block; color: #E3E3E3; text-decoration: none; font-family: 'DM Sans'; margin: 10px 0; font-size: 15px; }}
 .bb-footer a:hover {{ color: {ORANGE}; }}
 .bb-footer .bottom {{ border-top: 1px solid #3a3d40; margin-top: 32px; padding-top: 18px; font-size: 13px; color: #9aa0a6; }}
+.stApp {{ overflow-x: hidden; }}
+
+/* Phones and small tablets */
+@media (max-width: 760px) {{
+  .block-container {{ padding-left: 1rem !important; padding-right: 1rem !important; }}
+  .bb-nav {{ flex-wrap: wrap; padding: 12px 4px 0; margin: 0 -0.5rem; }}
+  .bb-nav img {{ height: 34px; }}
+  .bb-cta {{ padding: 8px 16px; font-size: 13px; }}
+  .bb-nav .links {{ order: 3; width: 100%; display: flex; overflow-x: auto; white-space: nowrap; gap: 4px;
+    padding: 10px 0 8px; margin-top: 10px; border-top: 1px solid #EFEFEF; scrollbar-width: none; }}
+  .bb-nav .links::-webkit-scrollbar {{ display: none; }}
+  .bb-nav .links a {{ margin: 0 14px 0 0; font-size: 14px; }}
+  .bb-hero {{ padding: 32px 100vw 32px; }}
+  .bb-hero .grid {{ flex-direction: column; gap: 20px; align-items: stretch; }}
+  .bb-hero p.lead {{ font-size: 15px; }}
+  h1 {{ font-size: 32px !important; line-height: 1.18 !important; }}
+  h2 {{ font-size: 25px !important; }}
+  h3 {{ font-size: 19px !important; }}
+  .bb-btn, .bb-btn-outline {{ display: block; text-align: center; margin: 0 0 12px 0; padding: 13px 20px; }}
+  .bb-card {{ min-height: 0; padding: 22px 20px 18px; }}
+  .bb-kpi {{ padding: 14px 16px; }}
+  .bb-kpi .v {{ font-size: 24px; }}
+  .bb-reco {{ font-size: 14.5px; padding: 14px 16px; }}
+  .bb-rule {{ margin: 12px 0 20px; }}
+  div.stButton > button, div.stDownloadButton > button {{ width: 100%; }}
+  .bb-footer {{ padding: 40px 100vw 24px; margin-top: 40px; }}
+  .bb-footer > div:first-child {{ gap: 28px !important; }}
+  .bb-footer img {{ height: 48px; }}
+}}
 </style>
 """
 
