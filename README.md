@@ -131,5 +131,4 @@ monthly. See `docs/METHODS.md`.
 Emmanuel Adetooto, Climate Data and Energy Systems Lead, BioBuild Africa.
 B.Eng Metallurgical and Materials Engineering (FUTA). MIT licence.
 
-Code was written with AI coding assistance (Anthropic Claude). Every assumption is listed with its
-source in `switchnaija/data/defaults.yaml`, and the test suite checks the physics and the sums.
+Every assumption is listed with its source in `switchnaija/data/defaults.yaml`, and the test suite checks the physics and the sums.
